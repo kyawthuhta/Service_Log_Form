@@ -1,0 +1,34 @@
+<p>
+  <strong>Name:</strong>
+  <%= @machine.name %>
+</p>
+
+<p>
+  <strong>MAC:</strong>
+  <%= @machine.mac %>
+</p>
+
+<p>
+  <strong>CPU:</strong>
+  <%= @machine.cpu %>
+</p>
+
+<p>
+  <strong>HDD:</strong>
+  <%= @machine.hdd %>
+</p>
+<p>
+  <strong>Optical drive:</strong>
+  <%= @machine.optical_drive %>
+</p>
+<p>
+  <strong>OS:</strong>
+  <%= @machine.os %>
+</p>
+<p>
+  <strong>Purchase date:</strong>
+  <%= @machine.purchase_date %>
+</p>
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

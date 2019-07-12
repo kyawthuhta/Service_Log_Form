@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  mac: MyString
+  cpu: MyString
+  ram: MyString
+  hdd: MyString
+  optical_drive: MyString
+  os: MyString
+  purchase_date: 2019-07-12
+
+two:
+  name: MyString
+  mac: MyString
+  cpu: MyString
+  ram: MyString
+  hdd: MyString
+  optical_drive: MyString
+  os: MyString
+  purchase_date: 2019-07-12
