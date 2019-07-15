@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :people
+  resources :contracts
   # root 'organizations#index'
   root 'machines#index'
 
