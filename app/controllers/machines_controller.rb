@@ -19,7 +19,7 @@ class MachinesController < ApplicationController
   	if @machine.save
   		redirect_to @machine
   	else
-  		render new
+  		render :new
   	end
   end
 

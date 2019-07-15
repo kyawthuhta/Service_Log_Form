@@ -21,7 +21,7 @@ class OrganizationsController < ApplicationController
   	if @organization.save
   		redirect_to @organization
   	else 
-  		render new
+  		render :new
   	end 
   end
 
