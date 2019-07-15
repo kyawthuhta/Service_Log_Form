@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dated: 2019-07-15
+  people: one
+  service_from: 2019-07-15
+  service_to: 2019-07-15
+  preferred_date: MyString
+  preferred_time: MyString
+
+two:
+  dated: 2019-07-15
+  people: two
+  service_from: 2019-07-15
+  service_to: 2019-07-15
+  preferred_date: MyString
+  preferred_time: MyString

@@ -1,0 +1,46 @@
+<%= form_with(model: contract, local: true) do |form| %>
+<% if contract.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contract.errors.count, "error") %> prohibited this contract from being saved:</h2>
+
+      <ul>
+      <% contract.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :people_id %>
+    <%= form.text_field :people_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :service_from %>
+    <%= form.date_select :service_from %>
+  </div>
+
+  <div class="field">
+    <%= form.label :service_to %>
+    <%= form.date_select :service_to %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preferred_date %>
+    <%= form.text_field :preferred_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :preferred_time %>
+    <%= form.text_field :preferred_time %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
