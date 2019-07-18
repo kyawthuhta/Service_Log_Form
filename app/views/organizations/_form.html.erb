@@ -1,0 +1,30 @@
+<div class="panl panel-default">
+    <div class="panel-heading no-print">
+        <div class="btn-group"></div>
+    </div>
+    <div class="panel-body panel-form">
+        <%= simple_form_for organization, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+        <% if organization.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(organization.errors.count, "error") %> prohibited this organization from being saved:</h2>
+            <ul>
+                <% organization.errors.full_messages.each do |message| %>
+                <li>
+                    <%= message %>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+        <%= form.input :name, placeholder: 'Shine Co.,Ltd.' %>
+        <%= form.input :address,  label: 'Address' %>
+        <%= form.input :phone, placeholder: '09-123456789', label: '' %>
+        <%= form.input :email, placeholder: 'ab@gmail.com', label: 'Email' %>
+        
+        <%= link_to 'Back', organizations_path, class: 'col-sm-offset-3 btn btn-default' %>
+        <%= form.button :submit, class: 'btn btn-primary' %>
+        <% end %>        
+    </div>
+</div>
+</div>

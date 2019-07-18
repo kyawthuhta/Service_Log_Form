@@ -1,22 +1,29 @@
-<p>
-  <strong>Name:</strong>
-  <%= @person.name %>
-</p>
+<div class="panel panel-default">
+	<div class="panel panel-heading">
+		People
+	</div>
+	<div class="panel panel-body">
+		<p>
+  		<strong>Name:</strong>
+  		<%= @person.name %>
+		</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @person.phone %>
-</p>
+		<p>
+		  <strong>Phone:</strong>
+		  <%= @person.phone %>
+		</p>
 
-<p>
-  <strong>Designation:</strong>
-  <%= @person.designation %>
-</p>
+		<p>
+		  <strong>Designation:</strong>
+		  <%= @person.designation %>
+		</p>
 
-<p>
-  <strong>Organization:</strong>
-  <%= @person.organization %>
-</p>
-
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+		<p>
+		  <strong>Organization:</strong>
+		  <%= @person.organization %>
+		</p>
+	</div>
+	<div class="panel panel-footer">
+		<%= link_to 'People', people_url, class: 'btn btn-default' %>
+	</div>
+</div>
