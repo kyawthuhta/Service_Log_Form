@@ -1,24 +1,33 @@
 <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+  	Organization details
+  </div>
+  <div class="panel-body">
+  	<p>
+  	<strong>Name:</strong>
+  	<%= @organization.name %>
+	</p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @organization.name %>
-</p>
+	<p>
+	  <strong>Address:</strong>
+	  <%= @organization.address %>
+	</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @organization.address %>
-</p>
+	<p>
+	  <strong>Phone:</strong>
+	  <%= @organization.phone %>
+	</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @organization.phone %>
-</p>
+	<p>
+	  <strong>Email:</strong>
+	  <%= @organization.email %>
+	</p>
+  </div>
+  <div class="panel-footer">
+  	<%= link_to "All Organizations", organizations_url, class: 'btn btn-default' %>
+  </div>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @organization.email %>
-</p>
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
+

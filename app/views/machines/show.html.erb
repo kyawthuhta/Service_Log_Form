@@ -1,34 +1,41 @@
-<p>
-  <strong>Name:</strong>
-  <%= @machine.name %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    Machine detail
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>Name:</strong>
+      <%= @machine.name %>
+    </p>
 
-<p>
-  <strong>MAC:</strong>
-  <%= @machine.mac %>
-</p>
+    <p>
+      <strong>MAC:</strong>
+      <%= @machine.mac %>
+    </p>
 
-<p>
-  <strong>CPU:</strong>
-  <%= @machine.cpu %>
-</p>
+    <p>
+      <strong>CPU:</strong>
+      <%= @machine.cpu %>
+    </p>
 
-<p>
-  <strong>HDD:</strong>
-  <%= @machine.hdd %>
-</p>
-<p>
-  <strong>Optical drive:</strong>
-  <%= @machine.optical_drive %>
-</p>
-<p>
-  <strong>OS:</strong>
-  <%= @machine.os %>
-</p>
-<p>
-  <strong>Purchase date:</strong>
-  <%= @machine.purchase_date %>
-</p>
-
-<%= link_to 'Edit', edit_machine_path(@machine) %> |
-<%= link_to 'Back', machines_path %>
+    <p>
+      <strong>HDD:</strong>
+      <%= @machine.hdd %>
+    </p>
+    <p>
+      <strong>Optical drive:</strong>
+      <%= @machine.optical_drive %>
+    </p>
+    <p>
+      <strong>OS:</strong>
+      <%= @machine.os %>
+    </p>
+    <p>
+      <strong>Purchase date:</strong>
+      <%= @machine.purchase_date %>
+    </p>
+  </div>
+  <div class="panel-footer">
+    <%= link_to "All machines", machines_url, class: 'btn btn-default' %>
+  </div>
+</div>

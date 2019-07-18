@@ -1,40 +1,39 @@
-<h1>Organization</h1>
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @organizations.each do |organization| %>
-        <tr>
-            <td>
-                <%= organization.name %>
-            </td>
-            <td>
-                <%= organization.address %>
-            </td>
-            <td>
-                <%= organization.phone %>
-            </td>
-            <td>
-                <%= organization.email %>
-            </td>
-            <td>
-                <%= link_to 'Show', organization %>
-            </td>
-            <td>
-                <%= link_to 'Edit', edit_organization_path(organization) %>
-            </td>
-            <td>
-                <%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
-</table>
-<%= link_to 'New Organization', new_organization_path %>
+<!-- <h1>Organization</h1> -->
+<div class="panel panel-default">
+    <div class="panel-heading no-print">
+        <div class="btn-group">
+            <%= link_to 'Add Organization', new_organization_url, class: 'btn btn-default btn-sm' %>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr role="row">
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @organizations.each do |organization| %>
+                            <tr>
+                                <td><%= organization.name %></td>
+                                <td><%= organization.address %></td>
+                                <td><%= organization.phone %></td>
+                                <td><%= organization.email %></td>
+                                <td>
+                                        <%= link_to 'Show', organization,class: 'btn btn-xs btn-default' %>
+                                        <%= link_to 'Edit', edit_organization_path(organization), class: 'btn btn-xs btn-default'%>
+                                        <%= link_to 'Destroy', organization, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-warning' %>
+                                    </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

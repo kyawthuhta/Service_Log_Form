@@ -1,7 +1,14 @@
 class MachinesController < ApplicationController
 	before_action :set_machine, only: [:show, :edit, :update, :destroy]
+  respond_to :html, :json, only: :index
   def index
-  	@machines = Machine.all
+    
+
+    @q        = Machine.ransack(params[:q])
+    @machines = @q.result
+    respond_with @machines
+
+    
   end
 
   def show
@@ -11,7 +18,7 @@ class MachinesController < ApplicationController
   	@machine = Machine.new
   end
 
-  def edit
+  def edit    
   end
 
   def create
@@ -24,8 +31,13 @@ class MachinesController < ApplicationController
   end
 
   def update
-  	@machine = Machine.update(machine_params)
-  	redirect_to machine_path
+  	# @machine = Machine.update(machine_params)
+  	# redirect_to machine_path
+    if @machine.update(machine_params)
+      redirect_to @machine, notice: 'Machine is successfully update'
+    else
+      render action: edit
+    end
   end
 
   def destroy

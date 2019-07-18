@@ -1,27 +1,29 @@
-<%= form_with(model: person, local: true) do |form| %>
-
-
-<div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :designation %>
-    <%= form.text_field :designation %>
-  </div>
-
-  <div class="field">
-    <%= form.label :organization %>
-    <%= form.text_field :organization %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+<div class="panl panel-default">
+    <div class="panel-heading no-print">
+        <div class="btn-group"></div>
+    </div>
+    <div class="panel-body panel-form">
+        <%= simple_form_for person, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+            <% if person.errors.any? %>
+            <div id="error_explanation">
+                <h2>
+                    <%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+                <ul>
+                    <% person.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <%= form.input :name, placeholder: 'U Mya' %>
+            <%= form.input :phone, label: 'Phone' %>
+            <%= form.input :designation %>
+            <%= form.input :organization %>            
+            <%= link_to 'Back', people_path, class: 'col-sm-offset-3 btn btn-default' %>
+            <%= form.button :submit, class: 'btn btn-primary' %>
+        <% end %>        
+    </div>
+</div>
+</div>
