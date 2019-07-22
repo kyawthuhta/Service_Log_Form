@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_15_102639) do
+ActiveRecord::Schema.define(version: 2019_07_22_034548) do
 
   create_table "contracts", force: :cascade do |t|
     t.date "dated"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2019_07_15_102639) do
     t.date "purchase_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mslogs", force: :cascade do |t|
+    t.date "date"
+    t.integer "machine_id"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["machine_id"], name: "index_mslogs_on_machine_id"
   end
 
   create_table "organizations", force: :cascade do |t|

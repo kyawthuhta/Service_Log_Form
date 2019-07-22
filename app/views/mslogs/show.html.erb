@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+	<div class="panel panel-header">
+		Mslog details
+	</div>
+	<div class="panel panel-body">
+		<p>
+	      <strong>Date:</strong>
+	      <%= @mslog.date %>
+	    </p>
+	    <p>
+	      <strong>Computer Name-MAC:</strong>
+	      <%=  @mslog.machine.name %>
+
+	    </p>
+	    <p>
+	      <strong>Description:</strong>
+	      <%= @mslog.description%>
+	    </p>
+	</div>
+	<div class="panel panel-footer">
+		<%= link_to "All Mslog", mslogs_url, class: 'btn btn-default' %>
+	</div>
+</div>

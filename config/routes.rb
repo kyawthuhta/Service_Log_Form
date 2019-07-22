@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   
+  
   devise_for :users
   resources :people
   resources :contracts
+  resources :mslogs
   # root 'organizations#index'
   root 'machines#index'
 
