@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :people
   resources :contracts
   resources :mslogs
+  resources :svclogs
   # root 'organizations#index'
   root 'machines#index'
 

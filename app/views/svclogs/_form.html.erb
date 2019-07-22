@@ -1,0 +1,24 @@
+<%= simple_form_for @svclog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+            <% if svclog.errors.any? %>
+            <div id="error_explanation">
+                <h2>
+                    <%= pluralize(svclog.errors.count, "error") %> prohibited this svclog from being saved:</h2>
+                <ul>
+                    <% svclog.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <div class="col-sm-8">
+                <%= form.input :organization_id, label: '' do %>
+                <%=form.select :organization_id, Organization.all.map { |p| [p.name, p.id]}, {},{class: 'form-control string optional'} %>
+                <% end %>
+            <%= form.input :department%>
+            <%= form.input :location %>
+            <%= link_to 'Back', svclogs_path, class: 'col-sm-offset-3 btn btn-default' %>
+            <%= form.button :submit, class: 'btn btn-primary' %>
+            </div>
+        <% end %>

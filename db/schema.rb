@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_034548) do
+ActiveRecord::Schema.define(version: 2019_07_22_050325) do
 
   create_table "contracts", force: :cascade do |t|
     t.date "dated"
@@ -64,13 +64,13 @@ ActiveRecord::Schema.define(version: 2019_07_22_034548) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "peoplrs", force: :cascade do |t|
-    t.string "name"
-    t.string "phone"
-    t.string "designation"
-    t.string "organization"
+  create_table "svclogs", force: :cascade do |t|
+    t.integer "organization_id"
+    t.string "department"
+    t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_svclogs_on_organization_id"
   end
 
   create_table "users", force: :cascade do |t|
