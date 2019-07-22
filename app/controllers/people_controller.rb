@@ -1,8 +1,10 @@
 class PeopleController < ApplicationController
 	before_action :set_response, only: [:show, :edit, :update, :destroy]
-  
+  respond_to :html, :json, only: :index
   def index
-  	@people = Person.all
+    @q = Person.ransack(params[:q])
+    @people = @q.result
+    # respond_with @people
   end
 
   def show
@@ -25,8 +27,13 @@ class PeopleController < ApplicationController
   end
 
   def update
-  	@person = Person.update(person_params)
-  	redirect_to people_path
+  	# @person = Person.update(person_params)
+  	# redirect_to people_path
+    if @person.update(person_params)
+      redirect_to @person, notice: 'People is successfully update'
+    else
+      render action: edit
+    end
   end
 
   def destroy

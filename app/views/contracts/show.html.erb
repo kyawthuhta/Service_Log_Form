@@ -1,2 +1,35 @@
-<h1>Contracts#show</h1>
-<p>Find me in app/views/contracts/show.html.erb</p>
+<div class="panel panel-default">
+	<div class="panel panel-header">
+		Contract details
+	</div>
+	<div class="panel panel-body">
+		<p>
+	      <strong>Date:</strong>
+	      <%= @contract.dated %>
+	    </p>
+	    <p>
+	      <strong>Contract person:</strong>
+	      <%=  @contract.person.name %>
+
+	    </p>
+	    <p>
+	      <strong>Service from:</strong>
+	      <%= @contract.service_from %>
+	    </p>
+	    <p>
+	      <strong>Service to:</strong>
+	      <%= @contract.service_to %>
+	    </p>
+	    <p>
+	      <strong>Preferred date:</strong>
+	      <%= @contract.preferred_date %>
+	    </p>
+	    <p>
+	      <strong>Preferred time:</strong>
+	      <%= @contract.preferred_time %>
+	    </p>
+	</div>
+	<div class="panel panel-footer">
+		<%= link_to "All contracts", contracts_url, class: 'btn btn-default' %>
+	</div>
+</div>
