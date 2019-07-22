@@ -1,0 +1,2 @@
+# $ ->
+	# $('.select-person').selectize

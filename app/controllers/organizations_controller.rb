@@ -1,9 +1,11 @@
 class OrganizationsController < ApplicationController
 	
 	before_action :set_organization, only: [:show, :edit, :update, :destroy]
-
+  respond_to :html, :json, only: :index
   def index
-  	@organizations = Organization.all
+    @q = Organization.ransack(params[:q])
+    @organizations = @q.result
+    # respond_with @organizations
   end
 
   def show
@@ -26,8 +28,13 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-  	@organization = Organization.update(organization_params)
-  	redirect_to organization_path
+  	# @organization = Organization.update(organization_params)
+  	# redirect_to organization_path
+    if @organization.update(organization_params)
+      redirect_to @organization, notice: 'Organization is successfully update'
+    else
+      render action: edit
+    end
   end
 
   def destroy

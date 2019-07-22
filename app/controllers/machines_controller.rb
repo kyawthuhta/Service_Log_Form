@@ -2,13 +2,9 @@ class MachinesController < ApplicationController
 	before_action :set_machine, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json, only: :index
   def index
-    
-
     @q        = Machine.ransack(params[:q])
     @machines = @q.result
     respond_with @machines
-
-    
   end
 
   def show

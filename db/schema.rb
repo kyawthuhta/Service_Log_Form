@@ -14,14 +14,14 @@ ActiveRecord::Schema.define(version: 2019_07_15_102639) do
 
   create_table "contracts", force: :cascade do |t|
     t.date "dated"
-    t.integer "people_id"
+    t.integer "person_id"
     t.date "service_from"
     t.date "service_to"
     t.string "preferred_date"
     t.string "preferred_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["people_id"], name: "index_contracts_on_people_id"
+    t.index ["person_id"], name: "index_contracts_on_person_id"
   end
 
   create_table "machines", force: :cascade do |t|
