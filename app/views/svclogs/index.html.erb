@@ -1,0 +1,46 @@
+<div class="panel panel-default">
+    <div class="panel-heading no-print">
+        <div class="btn-group">
+            <%= link_to 'Add Svclog', new_svclog_url, class: 'btn btn-default btn-sm' %>
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="table-responsive col-sm-8">
+                <table class="table table-striped">
+                    <thead>
+                        <tr role="row">
+                            <th>Office</th>
+                            <th>Department</th>
+                            <th>Location</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @svclogs.each do |svclog| %>
+                            <tr>
+                                <td><%= svclog.organization.name %></td>
+                                <td><%= svclog.department %></td>
+                                <td><%= svclog.location %></td>
+                                <td>
+                                        <%= link_to 'Show', svclog,class: 'btn btn-xs btn-default' %>
+                                        <%= link_to 'Edit', edit_svclog_path(svclog), class: 'btn btn-xs btn-default'%>
+                                        <%= link_to 'Destroy', svclog, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-xs btn-warning' %>
+                                    </td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-responsive col-sm-4">
+                <table>
+                    <tbody>
+                        <tr>
+                           
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

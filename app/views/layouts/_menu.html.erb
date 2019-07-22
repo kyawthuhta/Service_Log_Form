@@ -3,29 +3,44 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">Service Log Form</a>
         </div>
-        <ul class="nav navbar-nav">
-            <li>
-                <%= link_to 'Organization', organizations_url %>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <span class="glyphicon glyphicon-cog">
+                        Setup
+                    </span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                </ul>
             </li>
             <li>
-                <%= link_to 'Machine', machines_url %>
+                <%= link_to 'Organization', organizations_url, class: '' %>
             </li>
             <li>
-                <%= link_to 'People', people_url %>
+                <%= link_to 'Machine', machines_url, class: '' %>
+            </li>
+            <li>
+                <%= link_to 'People', people_url, class: '' %>
+            </li>
+            <li>
+                <%= link_to 'Ms-Log', mslogs_url, class: '' %>
             </li>
             <li>
                 <%= link_to 'Contract', contracts_url %>
             </li>
+            
             <li>
-                <%= link_to 'Ms-Log', mslogs_url %>
+                <%= link_to 'Svc-Log', svclogs_url %>
             </li>
         </ul>
-        <!-- <div class="collapse navbar-toggleable-xs" id="exCollapsingNavbar2"> -->
         <ul class="nav navbar-nav navbar-right">
             <li>
               <%= link_to "Log Out", destroy_user_session_url, method: :delete %>
             </li>            
         </ul>
-      <!-- </div> -->
+        </div>
+        
     </div>
 </nav>
