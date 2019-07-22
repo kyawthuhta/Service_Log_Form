@@ -19,7 +19,7 @@
             <% end %>
             <%= form.input :dated, as: :string, input_html: {class: 'datepicker'} %>
             <%= form.input :person_id, label: 'Contract Person' do %>
-                <%=form.select :person_id, Person.all.map { |p| [p.name + "__"+p.phone, p.id]}, {},{class: 'form-control string optional'} %>
+                <%=form.select :person_id, Person.all.map { |p| [p.name + "("+p.phone+")", p.id]}, {},{class: 'form-control string optional'} %>
             <% end %>
             <%= form.input :service_from, as: :string, input_html: {class: 'datepicker'} %>
             <%= form.input :service_to, as: :string, input_html: {class: 'datepicker'} %>

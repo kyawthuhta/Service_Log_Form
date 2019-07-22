@@ -1,0 +1,30 @@
+<div class="panl panel-default">
+    <div class="panel-heading no-print">
+        <div class="btn-group"></div>
+    </div>
+    <div class="panel-body panel-form">
+        <%= simple_form_for @mslog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+            <% if mslog.errors.any? %>
+            <div id="error_explanation">
+                <h2>
+                    <%= pluralize(mslog.errors.count, "error") %> prohibited this mslog from being saved:</h2>
+                <ul>
+                    <% mslog.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+                </ul>
+            </div>
+            <% end %>
+            <%= form.input :date, as: :string, input_html: {class: 'datepicker'} %>
+            <%= form.input :machine_id, label: '' do %>
+                <%=form.select :machine_id, Machine.all.map { |p| [p.name + "-"+p.mac, p.id]}, {},{class: 'form-control string optional'} %>
+            <% end %>
+            <%= form.input :description %>
+            <%= link_to 'Back', mslogs_path, class: 'col-sm-offset-3 btn btn-default' %>
+            <%= form.button :submit, class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+    <!-- </div> -->
+    <!-- </div>
