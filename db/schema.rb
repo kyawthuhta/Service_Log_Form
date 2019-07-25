@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_22_050325) do
+ActiveRecord::Schema.define(version: 2019_07_24_035658) do
+
+  create_table "cms", force: :cascade do |t|
+    t.integer "contract_id"
+    t.integer "machine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contract_id"], name: "index_cms_on_contract_id"
+    t.index ["machine_id"], name: "index_cms_on_machine_id"
+  end
 
   create_table "contracts", force: :cascade do |t|
     t.date "dated"
@@ -64,6 +73,15 @@ ActiveRecord::Schema.define(version: 2019_07_22_050325) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "peoplrs", force: :cascade do |t|
+    t.string "name"
+    t.string "phone"
+    t.string "designation"
+    t.string "organization"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "svclogs", force: :cascade do |t|
     t.integer "organization_id"
     t.string "department"
@@ -71,6 +89,15 @@ ActiveRecord::Schema.define(version: 2019_07_22_050325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_svclogs_on_organization_id"
+  end
+
+  create_table "svms", force: :cascade do |t|
+    t.integer "svclog_id"
+    t.integer "mslog_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mslog_id"], name: "index_svms_on_mslog_id"
+    t.index ["svclog_id"], name: "index_svms_on_svclog_id"
   end
 
   create_table "users", force: :cascade do |t|

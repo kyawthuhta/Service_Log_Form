@@ -1,33 +1,25 @@
-<div class="panl panel-default">
-    <div class="panel-heading no-print">
-        <div class="btn-group"></div>
-    </div>
-    <div class="panel-body panel-form">
-        <%= simple_form_for machine, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
-            <% if machine.errors.any? %>
-            <div id="error_explanation">
-                <h2>
-                    <%= pluralize(machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
-                <ul>
-                    <% machine.errors.full_messages.each do |message| %>
-                    <li>
-                        <%= message %>
-                    </li>
-                    <% end %>
-                </ul>
-            </div>
-            <% end %>
-            <%= form.input :name, placeholder: 'Dell' %>
-            <%= form.input :mac, placeholder: 'A1:56:C3:D9:63:BB', label: 'MAC No.' %>
-            <%= form.input :cpu, placeholder: '5th gen', label: 'CPU' %>
-            <%= form.input :ram, placeholder: '4 Gb', label: 'RAM' %>
-            <%= form.input :hdd, placeholder: '1Tb or 10000Gb', label: 'HDD' %>
-            <%= form.input :optical_drive, placeholder: 'External CD Drive' %>
-            <%= form.input :os, placeholder: 'window 10', label: 'OS' %>
-            <%=form.input :purchase_date, as: :string, input_html: {class: 'datepicker'} %>
-            <%= link_to 'Back', machines_path, class: 'col-sm-offset-3 btn btn-default' %>
-            <%= form.button :submit, class: 'btn btn-primary' %>
-        <% end %>        
-    </div>
-</div>
-</div>
+<%= simple_form_for machine, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
+    <% if machine.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+                <%= pluralize(machine.errors.count, "error") %> prohibited this machine from being saved:</h2>
+            <ul>
+                <% machine.errors.full_messages.each do |message| %>
+                <li>
+                    <%= message %>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <%= f.input :name, placeholder: 'Dell' %>
+    <%= f.input :mac, placeholder: 'A1:56:C3:D9:63:BB', label: 'MAC No.' %>
+    <%= f.input :cpu, placeholder: '5th gen', label: 'CPU' %>
+    <%= f.input :ram, placeholder: '4 Gb', label: 'RAM' %>
+    <%= f.input :hdd, placeholder: '1Tb or 10000Gb', label: 'HDD' %>
+    <%= f.input :optical_drive, placeholder: 'External CD Drive' %>
+    <%= f.input :os, placeholder: 'window 10', label: 'OS' %>
+    <%=f.input :purchase_date, as: :string, input_html: {class: 'datepicker'} %>
+    <%= link_to 'Back', machines_path, class: 'col-sm-offset-3 btn btn-default' %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>

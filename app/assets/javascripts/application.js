@@ -11,6 +11,7 @@
 // about supported directives.
 //
 
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
@@ -24,9 +25,7 @@
 //= require bootstrap-datetimepicker
 
 //= require datepicker
+//= require cocoon
 
 
-
-
-
-
+//= require date

@@ -13,6 +13,7 @@ class ContractsController < ApplicationController
 
   def new
   	@contract = Contract.new
+    @contract.cms.build
   end
 
   def edit
@@ -23,7 +24,7 @@ class ContractsController < ApplicationController
   	@contract = Contract.new(contract_params)
     # byebug
   	if @contract.save
-      redirect_to @contract
+      redirect_to @contract, notice: 'Contract is successfully creatd'
   	else
       # flash[:alert] = 'Create failed!'
   		render :new
@@ -34,7 +35,7 @@ class ContractsController < ApplicationController
   	# @contract = Contract.updeate(contract_params)
   	# redirect_to contract_path
     if @contract.update(contract_params)
-      redirect_to @contract, notice: 'Contract is successfully update'
+      redirect_to @contract, notice: 'Contract is successfully updated'
     else
       render action: edit
     end
@@ -52,7 +53,17 @@ class ContractsController < ApplicationController
   end
 
   def contract_params
-  	params.require(:contract).permit(:dated, :person_id, :service_from, :service_to, :preferred_date, :preferred_time)
+  	params.require(:contract).permit(
+      :dated, :person_id, :service_from, :service_to, 
+      :preferred_date, :preferred_time,
+      cms_attributes: [
+        :id, :_destroy, :contract_id, :machine_id,
+        machine_attributes: [
+          :id, :name, :mac, :cpu, :ram, 
+          :hdd, :optical_drive, :os, :purchase_date
+        ]
+      ]
+    )
   end
 
 end

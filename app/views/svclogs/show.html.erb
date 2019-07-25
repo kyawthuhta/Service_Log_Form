@@ -1,17 +1,44 @@
-<form>
-	<div class="form-group">
-			<div>
-				<h2>Service Log Details</h2>
-			</div><br>
-			<div class="col-sm-4 col-centered">
-				<%= simple_form_for @svclog, html: {class: 'from-vertical'}, wrapper: :vertical_form do |f| %>
-		            <%= f.input :organization_id, label: '' do %>
-		                <%=f.select :organization_id, Organization.all.map { |p| [p.name, p.id]}, {},{class: 'form-control string optional'} %>
-		                <% end %>
-		            <%= f.input :department%>
-		            <%= f.input :location %>
-		            <%= link_to "All Svlog", svclogs_url, class: 'btn btn-default' %>
-        		<% end %>
-			</div>
-	</div>
-</form>
+<%= simple_form_for @svclog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <!-- <div class="btn btn-group"> -->
+                <%= link_to 'Service log details', svclogs_path, class: 'btn btn-default' %>
+            <!-- </div> -->
+        </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <%= f.input :organization_id, label: '' do %>
+                        <%=f.select :organization_id, Organization.all.map { |p| [p.name, p.id]}, {},{class: 'form-control string optional'} %>
+                    <% end %>
+                    <%= f.input :department%>
+                    <%= f.input :location %>
+                    
+                </div>
+            </div>
+            <div id="svms">
+                <table class="table table-input table-condensed" >
+                    <col width="20px">
+                    <col width="20px">
+                    <col width="120px">
+                    <col width="120px">
+                    <col width="60px">
+                    <thead>
+                        <tr>
+                            <th>...</th>
+                            <th>Serial</th>
+                            <th>Date</th>
+                            <th>Computer Name-MAC</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items-table-body">
+                        <%= f.simple_fields_for :svms do |svm| %>
+                            <%= render 'svm_fields', :f => svm %>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<% end %>

@@ -1,9 +1,9 @@
 <div class="panl panel-default">
-    <div class="panel-heading no-print">
+    <!-- <div class="panel-heading no-print">
         <div class="btn-group"></div>
-    </div>
-    <div class="panel-body panel-form">
-        <%= simple_form_for @mslog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+    </div> -->
+    <div class="panel-body panel-form col-md-8">
+        <%= simple_form_for @mslog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
             <% if mslog.errors.any? %>
             <div id="error_explanation">
                 <h2>
@@ -17,13 +17,13 @@
                 </ul>
             </div>
             <% end %>
-            <%= form.input :date, as: :string, input_html: {class: 'datepicker'} %>
-            <%= form.input :machine_id, label: '' do %>
-                <%=form.select :machine_id, Machine.all.map { |p| [p.name + "-"+p.mac, p.id]}, {},{class: 'form-control string optional'} %>
+            <%= f.input :date, as: :string, input_html: {class: 'datepicker'} %>
+            <%= f.input :machine_id, label: '' do %>
+                <%=f.select :machine_id, Machine.all.map { |p| [p.name + "-"+p.mac, p.id]}, {},{class: 'form-control string optional'} %>
             <% end %>
-            <%= form.input :description %>
+            <%= f.input :description %>
             <%= link_to 'Back', mslogs_path, class: 'col-sm-offset-3 btn btn-default' %>
-            <%= form.button :submit, class: 'btn btn-primary' %>
+            <%= f.button :submit, class: 'btn btn-primary' %>
         <% end %>
     </div>
     <!-- </div> -->

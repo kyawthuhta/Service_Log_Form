@@ -1,40 +1,41 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Service Log Form</a>
+<nav class="navbar navbar-dark ">
+    <div class="container-fluid  navbar-default navbar-fixed-top">
+        <div class="navbar-header ">
+            <a class="navbar-brand" href="#">Facil Formar</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <span class="glyphicon glyphicon-cog">
-                        Setup
-                    </span>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                </ul>
-            </li>
-            <li>
-                <%= link_to 'Organization', organizations_url, class: '' %>
-            </li>
-            <li>
-                <%= link_to 'Machine', machines_url, class: '' %>
-            </li>
-            <li>
-                <%= link_to 'People', people_url, class: '' %>
-            </li>
-            <li>
-                <%= link_to 'Ms-Log', mslogs_url, class: '' %>
-            </li>
-            <li>
-                <%= link_to 'Contract', contracts_url %>
-            </li>
-            
-            <li>
-                <%= link_to 'Svc-Log', svclogs_url %>
-            </li>
-        </ul>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-cog">
+                            Setup
+                        </span>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%= link_to 'Organization', organizations_url, class: '' %>
+                        </li>
+                        <li>
+                            <%= link_to 'Machine', machines_url, class: '' %>
+                        </li>
+                        <li>
+                            <%= link_to 'People', people_url, class: '' %>
+                        </li>
+                        <li>
+                            <%= link_to 'Ms-Log', mslogs_url, class: '' %>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li>
+                    <%= link_to 'Contract', contracts_url %>
+                </li>
+                
+                <li>
+                    <%= link_to 'Svc-Log', svclogs_url %>
+                </li>
+            </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
               <%= link_to "Log Out", destroy_user_session_url, method: :delete %>

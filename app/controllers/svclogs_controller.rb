@@ -12,6 +12,7 @@ class SvclogsController < ApplicationController
 
   def new
   	@svclog = Svclog.new
+    @svclog.svms.build
   end
 
   def edit
@@ -21,7 +22,7 @@ class SvclogsController < ApplicationController
     # byebug
   	@svclog = Svclog.new(svclog_params)
   	if @svclog.save
-      redirect_to @svclog
+      redirect_to @svclog, notice: 'Svclog is successfully created'
   	else
       # flash[:alert] = 'Create failed!'
   		render :new
@@ -30,7 +31,7 @@ class SvclogsController < ApplicationController
 
   def update
     if @svclog.update(svclog_params)
-      redirect_to @svclog, notice: 'Svclog is successfully update'
+      redirect_to @svclog, notice: 'Svclog is successfully updated'
     else
       render action: edit
     end
@@ -48,6 +49,13 @@ class SvclogsController < ApplicationController
   end
 
   def svclog_params
-  	params.require(:svclog).permit(:organization_id, :department, :location)
+  	params.require(:svclog).permit(:organization_id, :department, 
+      :location, svms_attributes: [
+        :id, :destroy, :svclog_id, :mslog_id,
+        mslog_attributes: [
+          :id, :date, :machine_id, :description
+        ]
+      ]
+    )
   end
 end

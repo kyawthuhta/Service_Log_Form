@@ -76,3 +76,4 @@ gem 'sassc-rails', '>= 2.1.0'
 gem 'pagy'
 gem 'ransack'
 gem 'momentjs-rails'
+gem "cocoon"

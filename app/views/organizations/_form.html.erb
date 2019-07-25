@@ -3,7 +3,7 @@
         <div class="btn-group"></div>
     </div>
     <div class="panel-body panel-form">
-        <%= simple_form_for organization, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+        <%= simple_form_for organization, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
         <% if organization.errors.any? %>
         <div id="error_explanation">
             <h2>
@@ -17,13 +17,15 @@
             </ul>
         </div>
         <% end %>
-        <%= form.input :name, placeholder: 'Shine Co.,Ltd.' %>
-        <%= form.input :address,  label: 'Address' %>
-        <%= form.input :phone, placeholder: '09-123456789', label: '' %>
-        <%= form.input :email, placeholder: 'ab@gmail.com', label: 'Email' %>
+        <div class="col-sm-6">
+            <%= f.input :name, placeholder: 'Shine Co.,Ltd.' %>
+            <%= f.input :address,  label: 'Address' %>
+            <%= f.input :phone, placeholder: '09-123456789', label: '' %>
+            <%= f.input :email, placeholder: 'ab@gmail.com', label: 'Email' %>
         
-        <%= link_to 'Back', organizations_path, class: 'col-sm-offset-3 btn btn-default' %>
-        <%= form.button :submit, class: 'btn btn-primary' %>
+            <%= link_to 'Back', organizations_path, class: 'col-sm-offset-3 btn btn-default' %>
+            <%= f.button :submit, class: 'btn btn-primary' %>
+        </div>
         <% end %>        
     </div>
 </div>

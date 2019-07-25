@@ -1,0 +1,26 @@
+<tr class="nested-fields line-item">
+  <td>
+    <%= link_to_remove_association f, {class: 'btn btn-small btn-default'} do %>
+      <!-- <i class="fa fa-remove" aria-hidden="true"></i>  -->
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    <% end %>
+  </td>
+  <td>
+    <p class="form-control-static">
+      <%= f.object.new_record? ? "new" : f.index + 1 %>
+    </p>
+  </td>
+  <%= f.fields_for :mslog, f.object.mslog || f.object.build_mslog do |sf| %>
+    <td>
+      <%= sf.input :date, as: :string, input_html: {class: 'datepicker'}, label: false %>
+    </td>
+    <td>
+      <%= sf.input :machine_id, label: false do %>
+        <%=sf.select :machine_id, Machine.all.map { |p| [p.name + "-"+p.mac, p.id]}, {},{class: 'form-control string optional'} %>
+      <% end %>
+    </td>
+    <td>
+      <%= sf.input :description, label: false %>
+    </td>
+  <% end %>
+</tr>

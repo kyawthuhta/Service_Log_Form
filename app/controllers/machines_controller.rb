@@ -30,7 +30,7 @@ class MachinesController < ApplicationController
   	# @machine = Machine.update(machine_params)
   	# redirect_to machine_path
     if @machine.update(machine_params)
-      redirect_to @machine, notice: 'Machine is successfully update'
+      redirect_to @machine, notice: 'Machine is successfully updated'
     else
       render action: edit
     end
@@ -38,7 +38,7 @@ class MachinesController < ApplicationController
 
   def destroy
   	@machine.destroy
-  	redirect_to machines_url, notice: 'Machine was successful destroy'
+  	redirect_to machines_url, notice: 'Machine was successful destroyed'
   end
 
   private
@@ -52,7 +52,14 @@ class MachinesController < ApplicationController
   # end
 
   def machine_params
-    params.require(:machine).permit(:name, :mac, :cpu, :ram, :hdd, :optical_drive, :os, :purchase_date)
+    params.require(:machine).permit(
+      :name, :mac, :cpu, 
+      :ram, :hdd, :optical_drive, 
+      :os, :purchase_date,
+      cms_attributes: [
+        :id, :_destroy
+      ]
+    )
   end
 
 end

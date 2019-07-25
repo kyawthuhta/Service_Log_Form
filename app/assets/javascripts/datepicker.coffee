@@ -1,11 +1,6 @@
 $(document).on 'turbolinks:load', ->
 	$('.datepicker').datetimepicker
 	    format: 'YYYY/MM/DD'
+	    showTodayButton: true
 	    showClear: true
-# 	$('#datetimepicker').datetimepicker({
-#     format: 'DD/MM/YYYY'
-# });
-
-
-	
-	
+	    showClose: true

@@ -1,24 +1,11 @@
-<p id="notice"><%= notice %></p>
-<div class="panel panel-default">
-	<div class="panel-heading">
-		Mslog details
-	</div>
-	<div class="panel panel-body">
-		<p>
-	      <strong>Date:</strong>
-	      <%= @mslog.date %>
-	    </p>
-	    <p>
-	      <strong>Computer Name-MAC:</strong>
-	      <%=  @mslog.machine.name %>
-
-	    </p>
-	    <p>
-	      <strong>Description:</strong>
-	      <%= @mslog.description%>
-	    </p>
-	</div>
-	<div class="panel panel-footer">
-		<%= link_to "All Mslog", mslogs_url, class: 'btn btn-default' %>
-	</div>
+<h3>Machine service logs</h3><br>
+<div class="col-md-6">
+<%= simple_form_for @mslog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |form| %>
+	<%= form.input :date, as: :string, input_html: {class: 'datepicker'} %>
+    <%= form.input :machine_id, label: '' do %>
+        <%=form.select :machine_id, Machine.all.map { |p| [p.name + "-"+p.mac, p.id]}, {},{class: 'form-control string optional'} %>
+        <% end %>
+    <%= form.input :description %>
+    <%= link_to 'Back', mslogs_path, class: 'col-sm-offset-3 btn btn-default' %>
+ <% end %>
 </div>
