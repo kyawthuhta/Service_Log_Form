@@ -27,5 +27,8 @@
 //= require datepicker
 //= require cocoon
 
+//= require selectize
+
 
 //= require date
+//= require contracts
