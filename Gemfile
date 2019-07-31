@@ -77,3 +77,4 @@ gem 'pagy'
 gem 'ransack'
 gem 'momentjs-rails'
 gem "cocoon"
+gem "selectize-rails"

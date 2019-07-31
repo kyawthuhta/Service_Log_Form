@@ -14,7 +14,9 @@
     <header>
       <%= render partial: 'layouts/menu' %>
     </header>
-    <%= render 'template/alert' %>
-    <%= yield %>
+    <div class="container">
+      <%= render 'template/alert' %>
+      <%= yield %>
+    </div>
   </body>
 </html>

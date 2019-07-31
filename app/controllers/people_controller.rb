@@ -12,6 +12,7 @@ class PeopleController < ApplicationController
 
   def new
   	@person = Person.new
+    # @person.contracts.build
   end
 
   def edit

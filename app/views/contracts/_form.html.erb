@@ -1,62 +1,96 @@
-<div class="container-fluid">
-<%= simple_form_for @contract, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
+<!-- <div class="container-fluid"> -->
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <%= link_to 'Contract Details', contracts_path, class: 'btn btn-default' %>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-8">
-                    <%= f.input :dated, as: :string, input_html: {class: 'datepicker'} %>
-                    <%= f.input :person_id, label: 'Contract Person' do %>
-                        <%=f.select :person_id, Person.all.map { |p| [p.name + "~>" + "Ph-" +p.phone , p.id]}, {},{class: 'form-control string optional'} %>
-                    <% end %>
-                    <%= f.input :service_from, as: :string, input_html: {class: 'datepicker'} %>
-                    <%= f.input :service_to, as: :string, input_html: {class: 'datepicker'} %>
-                    <%= f.input :preferred_date, placeholder: 'Mon,Tue' %>
-                    <%= f.input :preferred_time, placeholder: '9:00AM to 4:00PM' %>
-                </div>
+        <%= simple_form_for @contract, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
+            <div class="panel panel-heading">
+                <%= link_to 'Contract Details', contracts_path, class: 'btn btn-default' %>
             </div>
-            <h3>List of computers for maintenance</h3>
-            <div id='cms'>
-                <table class="table table-input table-condensed" >
-                    <thead>
-                        <tr>
-                            <th>...</th>
-                            <th>Serial</th>
-                            <th>Name</th>
-                            <th>Mac</th>
-                            <th>CPU</th>
-                            <th>RAM</th>
-                            <th>HDD</th>
-                            <th>Optical drive</th>
-                            <th>OS</th>
-                            <th>Purchase date</th>
-                        </tr>
-                    </thead>
-                    <tbody id="items-table-body">
-                        <%= f.simple_fields_for :cms do |cm| %>
-                            <%= render 'cm_fields', :f => cm %>
-                        <% end %>
-                        <%= link_to_add_association f, :cms, { 'data-association-insertion-node': 'tbody#items-table-body', 'data-association-insertion-method': 'append', class: 'btn btn-sm btn-default'} do %>
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true">
-                        </span>
-                        <% end %>
-                    </tbody>
-                </table>
-            </div>
-            <!-- <div class="row">
-                <div class="col-md-6">
-                    <h3>Service receiver</h3>
-                    <div class="form-group">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <%= f.input :dated, as: :string, input_html: {class: 'datepicker'} %>
+                            <%#= f.input :person_id, label: 'Contract Person' do%>
+                                <%#=f.select :person_id, Person.all.map { |p| [p.name + "~>" + "Ph-" +p.phone , p.id]}, {},{class: 'form-control string optional'} %>
+                                <%#= f.select("people", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+                            <% #end %>
+                            <%= f.association :person, as: :select %>
+
+                            <%= f.input :service_from, as: :string, input_html: {class: 'datepicker'} %>
+                            <%= f.input :service_to, as: :string, input_html: {class: 'datepicker'} %>
+                            <%= f.input :preferred_date, placeholder: 'Mon,Tue' %>
+                            <%= f.input :preferred_time, placeholder: '9:00AM to 4:00PM' %>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h3>Service provider</h3>
+                <h3>List of computers for maintenance</h3>
+                <div id='cms'>
+                    <div class="form-group">
+                        <table class="table table-input table-condensed" >
+                            <thead>
+                                <tr>
+                                    <th>...</th>
+                                    <th>Serial</th>
+                                    <th>Name</th>
+                                    <th>Mac</th>
+                                    <th>CPU</th>
+                                    <th>RAM</th>
+                                    <th>HDD</th>
+                                    <th>Optical drive</th>
+                                    <th>OS</th>
+                                    <th>Purchase date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="items-table-body">
+                                <%= link_to_add_association f, :cms, { 'data-association-insertion-node': 'tbody#items-table-body', 'data-association-insertion-method': 'append', class: 'btn btn-sm btn-default'} do %>
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                                </span>
+                                <%= f.simple_fields_for :cms do |cm| %>
+                                    <%= render 'cm_fields', :f => cm %>
+                                <% end %>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            </div> -->
-            <%= f.button :submit, class: 'btn btn-primary' %>
-        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Service receiver</h3>
+                        <div class="form-group col-md-6">
+                            <%= f.fields_for :service_receiver, f.object.service_receiver || f.object.build_service_receiver do |people| %>
+                                <tr>
+                                    <td>
+                                      <%= people.input :name, label: 'Name' %>
+                                    </td>
+                                    <td>
+                                      <%= people.input :designation, label: 'Designation' %>
+                                    </td>
+                                    <td>
+                                      <%= people.input :organization, label: 'Organization' %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Service provider</h3>
+                        <div class="form-group col-md-6">
+                            <%= f.fields_for :service_provider, f.object.service_provider || f.object.build_service_provider do |people| %>
+
+                                <td>
+                                  <%= people.input :name, label: 'Name' %>
+                                </td>
+                                <td>
+                                  <%= people.input :designation, label: 'Designation' %>
+                                </td>
+                                <td>
+                                  <%= people.input :organization, label: 'Organization' %>
+                                </td>
+                            <% end %>
+                        </div>
+                    </div>
+                    <%= f.button :submit, class: 'btn btn-primary' %>
+                </div>
+            </div>
+        <% end %>
     </div>
-<% end %>
-</div>
+<!-- </div> -->
