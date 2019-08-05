@@ -1,4 +1,4 @@
-<!-- <div class="container-fluid"> -->
+<div class="container-fluid">
     <div class="panel panel-default">
         <%= simple_form_for @contract, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
             <div class="panel panel-heading">
@@ -13,10 +13,11 @@
                                 <%#=f.select :person_id, Person.all.map { |p| [p.name + "~>" + "Ph-" +p.phone , p.id]}, {},{class: 'form-control string optional'} %>
                                 <%#= f.select("people", "person_id", Person.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
                             <% #end %>
+                            
                             <%= f.association :person, as: :select %>
 
                             <%= f.input :service_from, as: :string, input_html: {class: 'datepicker'} %>
-                            <%= f.input :service_to, as: :string, input_html: {class: 'datepicker'} %>
+                            <%= f.input :service_to, as: :string, input_html: {class: 'datepicker'}, label: 'To' %>
                             <%= f.input :preferred_date, placeholder: 'Mon,Tue' %>
                             <%= f.input :preferred_time, placeholder: '9:00AM to 4:00PM' %>
                         </div>
@@ -93,4 +94,4 @@
             </div>
         <% end %>
     </div>
-<!-- </div> -->
+</div>
