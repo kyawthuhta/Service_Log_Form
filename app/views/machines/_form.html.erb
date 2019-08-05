@@ -1,3 +1,4 @@
+<div class="col-md-8">
 <%= simple_form_for machine, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
     <% if machine.errors.any? %>
         <div id="error_explanation">
@@ -23,3 +24,4 @@
     <%= link_to 'Back', machines_path, class: 'col-sm-offset-3 btn btn-default' %>
     <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
+</div>

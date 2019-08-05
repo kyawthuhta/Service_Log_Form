@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Facil Formar</title>
+    <title>Facil Bilden</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,18 +12,18 @@
 </head>
 
 <body>
-    <header>
+    <!-- <header>
         <%= render partial: 'layouts/menu' %>
-    </header>
-    <!-- <div class="container"> -->
+    </header> -->
+    <div class="container">
         <%= render 'template/alert' %>
-    <!-- </div> -->
+    </div>
     <%# if notice %>
         <!-- <p class="alert alert-success">
             <%= notice %>
         </p> -->
         <%# end %>
-        <%# if alert %>
+        <% #if alert %>
         <!-- <p class="alert alert-danger">
             <%= alert %>
         </p> -->
