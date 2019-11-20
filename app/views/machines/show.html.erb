@@ -1,41 +1,13 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    Machine detail
-  </div>
-  <div class="panel-body">
-    <p>
-      <strong>Name:</strong>
-      <%= @machine.name %>
-    </p>
-
-    <p>
-      <strong>MAC:</strong>
-      <%= @machine.mac %>
-    </p>
-
-    <p>
-      <strong>CPU:</strong>
-      <%= @machine.cpu %>
-    </p>
-
-    <p>
-      <strong>HDD:</strong>
-      <%= @machine.hdd %>
-    </p>
-    <p>
-      <strong>Optical drive:</strong>
-      <%= @machine.optical_drive %>
-    </p>
-    <p>
-      <strong>OS:</strong>
-      <%= @machine.os %>
-    </p>
-    <p>
-      <strong>Purchase date:</strong>
-      <%= @machine.purchase_date %>
-    </p>
-  </div>
-  <div class="panel-footer">
-    <%= link_to "All machines", machines_url, class: 'btn btn-default' %>
-  </div>
+<div class="col-md-6 text-nowarp">
+  <%= simple_form_for @machine, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
+      <%= f.input :name %>
+      <%= f.input :mac %>
+      <%= f.input :cpu %>
+      <%= f.input :ram %>
+      <%= f.input :hdd %>
+      <%= f.input :optical_drive %>
+      <%= f.input :os %>
+      <%= f.input :purchase_date, as: :string, input_html: {class: 'datepicker'} %>
+      <%= link_to 'Back', machines_path, class: 'col-sm-offset-3 btn btn-default' %>
+  <% end %>
 </div>

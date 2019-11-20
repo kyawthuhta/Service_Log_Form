@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_26_111614) do
+ActiveRecord::Schema.define(version: 2019_11_18_105029) do
 
   create_table "cms", force: :cascade do |t|
     t.integer "contract_id"
@@ -92,7 +92,11 @@ ActiveRecord::Schema.define(version: 2019_07_26_111614) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "service_provider_id"
+    t.integer "service_receiver_id"
     t.index ["organization_id"], name: "index_svclogs_on_organization_id"
+    t.index ["service_provider_id"], name: "index_svclogs_on_service_provider_id"
+    t.index ["service_receiver_id"], name: "index_svclogs_on_service_receiver_id"
   end
 
   create_table "svms", force: :cascade do |t|

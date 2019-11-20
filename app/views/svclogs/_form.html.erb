@@ -2,27 +2,21 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <!-- <div class="btn btn-group"> -->
-                <%= link_to 'Service log details', svclogs_path, class: 'btn btn-default' %>
+            <%= link_to 'Service log details', svclogs_path, class: 'btn btn-default' %>
             <!-- </div> -->
         </div>
         <div class="panel-body">
             <div class="row">
                 <div class="col-md-8">
                     <%= f.input :organization_id, label: 'Office' do %>
-                        <%=f.select :organization_id, Organization.all.map { |p| [p.name, p.id]}, {},{class: 'form-control string optional'} %>
+                    <%=f.select :organization_id, Organization.all.map { |p| [p.name, p.id]}, {},{class: 'form-control string optional'} %>
                     <% end %>
                     <%= f.input :department%>
                     <%= f.input :location %>
-                    
                 </div>
             </div>
             <div id="svms">
-                <table class="table table-input table-condensed" >
-                    <col width="20px">
-                    <col width="20px">
-                    <col width="120px">
-                    <col width="120px">
-                    <col width="60px">
+                <table class="table table-input table-condensed">
                     <thead>
                         <tr>
                             <th>...</th>
@@ -34,13 +28,49 @@
                     </thead>
                     <tbody id="items-table-body">
                         <%= f.simple_fields_for :svms do |svm| %>
-                            <%= render 'svm_fields', :f => svm %>
+                        <%= render 'svm_fields', :f => svm %>
                         <% end %>
                         <%= link_to_add_association f, :svms, { 'data-association-insertion-node': 'tbody#items-table-body', 'data-association-insertion-method': 'append', class: 'btn btn-sm btn-default'} do %>
-                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         <% end %>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Service receiver</h3>
+                <div class="form-group col-md-6">
+                    <%= f.fields_for :service_receiver, f.object.service_receiver || f.object.build_service_receiver do |people| %>
+                    <tr>
+                        <td>
+                            <%= people.input :name, label: 'Name' %>
+                        </td>
+                        <td>
+                            <%= people.input :designation, label: 'Designation' %>
+                        </td>
+                        <td>
+                            <%= people.input :organization, label: 'Organization' %>
+                        </td>
+                    </tr>
+                    <% end %>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Service provider</h3>
+                <div class="form-group col-md-6">
+                    <%= f.fields_for :service_provider, f.object.service_provider || f.object.build_service_provider do |people| %>
+                    <td>
+                        <%= people.input :name, label: 'Name' %>
+                    </td>
+                    <td>
+                        <%= people.input :designation, label: 'Designation' %>
+                    </td>
+                    <td>
+                        <%= people.input :organization, label: 'Organization' %>
+                    </td>
+                    <% end %>
+                </div>
             </div>
             <%= f.button :submit, class: 'btn btn-primary' %>
         </div>

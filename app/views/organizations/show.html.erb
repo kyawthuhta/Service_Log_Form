@@ -1,12 +1,21 @@
 <!-- <p id="notice"><%= notice %></p> -->
-<div class="panel panel-default">
+<div class="col-md-6 text-nowarp">
+	<%= simple_form_for @organization, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
+	    <%= f.input :name, placeholder: 'Sys Co.,Ltd' %>
+	    <%= f.input :address, label: 'Address' %>
+	    <%= f.input :phone %>
+	    <%= f.input :email %>            
+	    <%= link_to 'Back', organizations_path, class: 'col-sm-offset-3 btn btn-default' %>
+	<% end %>
+</div>
+<!-- <div class="panel panel-default">
   <div class="panel-heading">
   	Organization details
   </div>
   <div class="panel-body">
   	<p>
   	<strong>Name:</strong>
-  	<%= @organization.name %>
+  	<%#= @organization.name %>
 	</p>
 
 	<p>
@@ -25,9 +34,6 @@
 	</p>
   </div>
   <div class="panel-footer">
-  	<%= link_to "All Organizations", organizations_url, class: 'btn btn-default' %>
+  	<%#= link_to "All Organizations", organizations_url, class: 'btn btn-default' %>
   </div>
-</div>
-
-
-
+</div> -->

@@ -1,9 +1,9 @@
 <%= simple_form_for @svclog, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
     <div class="panel panel-default">
         <div class="panel-heading">
-            <!-- <div class="btn btn-group"> -->
+            <div class="btn btn-group">
                 <%= link_to 'Service log details', svclogs_path, class: 'btn btn-default' %>
-            <!-- </div> -->
+            </div>
         </div>
         <div class="panel-body">
             <div class="row">
@@ -42,3 +42,27 @@
         </div>
     </div>
 <% end %>
+
+<!-- <div class="panel panel-default">
+    <div class="panel-heading">
+        <%#= link_to 'Service log details', svclogs_path, class: 'btn btn-default' %>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-8">
+                <p>
+                    <strong>Name</strong>
+                    <%#= @svclog.organization.name %>
+                </p>
+                <p>
+                    <strong>Department</strong>
+                    <%#= @svclog.department %>
+                </p>
+                <p>
+                    <strong>Location</strong>
+                    <%#= @svclog.location %>
+                </p>
+            </div>
+        </div>
+    </div>
+</div> -->

@@ -55,7 +55,9 @@ class SvclogsController < ApplicationController
         mslog_attributes: [
           :id, :date, :machine_id, :description
         ]
-      ]
+      ],
+      service_receiver_attributes: [:name, :designation, :organization],
+      service_provider_attributes: [:name, :designation, :organization]
     )
   end
 end
