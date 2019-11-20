@@ -1,5 +1,5 @@
-<div class="container-fluid">
-    <div class="panel panel-default">
+<!-- <div class="container-fluid">
+    <div class="panel panel-default"> -->
         <%= simple_form_for @contract, html: {class: 'from-horizontal'}, wrapper: :horizontal_form do |f| %>
             <div class="panel panel-heading">
                 <%= link_to 'Contract Details', contracts_path, class: 'btn btn-default' %>
@@ -66,7 +66,9 @@
                                       <%= people.input :designation, label: 'Designation' %>
                                     </td>
                                     <td>
-                                      <%= people.input :organization, label: 'Organization' %>
+                                      <%= people.input :organization, label: 'Organization'  %>
+                                        <%#= f.select("organization", "organization_id", Person.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+                                    <% # end %>
                                     </td>
                                 </tr>
                             <% end %>
@@ -93,5 +95,5 @@
                 </div>
             </div>
         <% end %>
-    </div>
-</div>
+   <!--  </div>
+</div> -->
